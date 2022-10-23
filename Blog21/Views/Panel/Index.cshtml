@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Post>
+
+
+
+
+@{
+    /* ViewBag.Title = "Blog Website";
+     ViewBag.Description = "This Blog has everything!!";
+     ViewBag.Keywords = "blog programming travel photography";
+     var base_path = Context.Request.PathBase;*/
+
+}
+
+<h2>Admin Home Panel</h2>
+
+<div>
+    <ul>
+        @foreach(var post in Model)
+            {
+        <li>
+            @post.Title
+           
+            <a asp-controller="Panel" asp-action="Edit" asp-route-id="@post.Id">
+                Edit
+            </a>
+
+            <a asp-controller="Panel" asp-action="Remove" asp-route-id="@post.Id">
+                Remove
+            </a>
+
+        </li>
+
+            }
+
+    </ul>
+
+</div>
+@*
+
+        <img src="~/content/static/antique-art-books-1448709.jpg" width="500" />
+
+
+    <div class="main-img">
+        <span class="title">Amazing Bloggy Site</span>
+        <form asp-controller="Home" asp-action="Index" method="get">
+            <input class="search" type="text" name="search" placeholder="Search Blog" value="" />
+            / <button class="submit-btn">Search</button>
+        </form>
+    </div>*@
