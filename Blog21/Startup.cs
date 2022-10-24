@@ -82,6 +82,7 @@ namespace Blog21
             //});
             //});
             app.UseAuthentication();
+            app.UseAuthorization();
             app.UseMvcWithDefaultRoute();
         }
     }

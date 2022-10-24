@@ -29,9 +29,8 @@ namespace Blog21.Controllers
 
         public IActionResult Index()
         {
-            var posts = _repo.GetAllPosts();
-
-            return View(posts);
+             var posts = _repo.GetAllPosts();
+             return View(posts);
         }
 
         public IActionResult Post(int id)
@@ -68,6 +67,8 @@ namespace Blog21.Controllers
             if (await _repo.SaveChangesAsync())
 
                 return RedirectToAction("Index");
+                //return RedirectToAction("Index, Panel");
+
             else
                 return View(post);
         }

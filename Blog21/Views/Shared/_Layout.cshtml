@@ -4,15 +4,14 @@
 
 <head>
     <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width" , initial-scale="2.0"/>
+    <meta name="viewport" content="width=device-width" , initial-scale="4.0"/>
     <title>@ViewBag.Title</title>
 </head>
 <body>
     <div>
         <a asp-controller="Home" asp-action="Index">Home</a>
-
-        <a asp-controller="Home" asp-action="Edit">Create Your Post</a>
-        <a asp-controller="Admin" asp-action="Index">Admin Panel</a>
+        <a asp-controller="Panel" asp-action="Edit">Create Your Post</a>
+        <a asp-controller="Panel" asp-action="Index">Admin Panel</a>
 
 
         @if (User.Identity.IsAuthenticated)

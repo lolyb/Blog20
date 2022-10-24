@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Blog21.Data.Repository;
 //using Blog21.Data.FileManager;
-//using Blog21.ViewModels;
+using Blog21.ViewModels;
 using System;
 using System.Collections.Generic;
 
