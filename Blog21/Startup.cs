@@ -69,18 +69,6 @@ namespace Blog21
 
             app.UseStaticFiles();
 
-            app.UseMvcWithDefaultRoute();
-            // app.UseRouting();
-
-
-
-            //app.UseEndpoints(endpoints =>
-            //{
-            //   endpoints.MapGet("/", async context =>
-            // {
-            //   await context.Response.WriteAsync("Hello World!");
-            //});
-            //});
             app.UseAuthentication();
             app.UseAuthorization();
             app.UseMvcWithDefaultRoute();

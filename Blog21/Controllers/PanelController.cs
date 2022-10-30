@@ -46,11 +46,10 @@ namespace Blog21.Controllers
             {
                 return View(new Post());
             }
-            else
-            {
-                var post = _repo.GetPost((int)id);
-                return View(post);
-            }
+            var post = _repo.GetPost((int)id);
+            return View(post);
+
+            
 
             // return View(new Post());
         }
