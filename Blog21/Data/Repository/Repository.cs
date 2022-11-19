@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 //using Blog21.Helpers;
 //using Blog21.Models.Comments;
-//using Blog21.ViewModels;
+using Blog21.ViewModels;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -34,6 +34,14 @@ namespace Blog21.Data.Repository
             return _ctx.Posts.ToList();
         
         }
+        public List<Post> GetAllPosts(string category)
+        {
+            Func<Post, bool> InCategory = (post) => { return post.Category.ToLower().Equals(category.ToLower()); };
+            return _ctx.Posts.Where(post => InCategory(post)).ToList() ;
+
+        }
+
+
 
         public Post GetPost(int id)
         {

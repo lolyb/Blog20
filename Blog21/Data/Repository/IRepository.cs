@@ -12,6 +12,7 @@ namespace Blog21.Data.Repository
         public Post GetPost(int id);
         // List<Post> GetAllPosts(int i);
         List<Post> GetAllPosts();
+        List<Post> GetAllPosts(string Category);
         void AddPost(Post post);
         void RemovePost(int id);
         void UpdatePost(Post post);

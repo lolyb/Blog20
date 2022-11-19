@@ -1,10 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-//using Blog21.Data.FileManager;
+
+using Blog21.Data.FileManager;
 using Blog21.Data.Repository;
 using Blog21.Models;
 using Blog21.ViewModels;
@@ -18,13 +15,14 @@ namespace Blog21.Controllers
     {
 
         private IRepository _repo;
+        private IFileManager _fileManager;
         
 
-           public PanelController(IRepository repo)
-            {
+           public PanelController(IRepository repo, IFileManager fileManager)
+           {
                 _repo = repo;
-
-             }
+                _fileManager = fileManager;
+           }
 
 
         public IActionResult Index()
@@ -44,10 +42,20 @@ namespace Blog21.Controllers
         {
             if (id == null)
             {
-                return View(new Post());
+                return View(new PostViewModel());
             }
             var post = _repo.GetPost((int)id);
-            return View(post);
+            return View(new PostViewModel
+            {
+                Id = post.Id,
+                Title = post.Title,
+                Body = post.Body,
+                CurrentImage = post.Image,
+                Description = post.Description,
+                Category= post.Category,
+                Tags= post.Tags
+
+            }) ;
 
             
 
@@ -56,8 +64,31 @@ namespace Blog21.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> Edit(Post post)
+        public async Task<IActionResult> Edit(PostViewModel vm)
         {
+            var post = new Post
+            {
+                Id = vm.Id,
+                Title = vm.Title,
+                Body = vm.Body,
+                Description= vm.Description,
+                Category = vm.Category,
+                Tags= vm.Tags,
+               };
+            
+            
+               if(vm.Image == null)
+               {
+                post.Image = "Same";
+               // post.Image = vm.CurrentImage;
+                }
+                else
+                {
+                   post.Image = await _fileManager.SaveImage(vm.Image); //Handle Image
+                
+                }
+
+
             if (post.Id > 0)
                 _repo.UpdatePost(post);
             else

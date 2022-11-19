@@ -12,7 +12,7 @@ using Blog21.Models;
 //using Blog21.Services.Email;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-//using Blog21.Data.FileManager;
+using Blog21.Data.FileManager;
 using System.Linq;
 
 namespace Blog21
@@ -52,6 +52,7 @@ namespace Blog21
             });
 
             services.AddTransient<IRepository, Repository>();
+            services.AddTransient<IFileManager, FileManager>();
             services.AddMvc();
                
             services.AddMvc(options => options.EnableEndpointRouting = false);
